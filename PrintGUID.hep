@@ -1,0 +1,15 @@
+[helpers]
+numberOfElements=2
+
+name1=PRINTGUID
+JavaMainClass1=com.ibm.rhapsody.samples.printguid.PrintGUID_Launcher
+JavaClassPath1=$USER_OMROOT\Helpers\PrintGUID\PrintGUID.jar
+isPlugin1=1
+helperTriggers1=
+
+name2=Print GUID
+isPluginCommand2=1
+command2=PRINTGUID
+applicableTo2=All
+isVisible2=1
+helperTriggers2=

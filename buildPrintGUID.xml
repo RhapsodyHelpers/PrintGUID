@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="all" name="Create Helper JAR">   
+	
+	<!--OUTPUT FOLDERS-->
+	<property name = "op.helpers" value="c:/IBM/Rhapsody/UserShare/Helpers"/>
+	<property name = "op.apps" value="${op.helpers}/PrintGUID"/>
+	
+	<!-- INPUT FOLDERS -->
+	<property name = "ip.PrintGUID" value="C:\Workspaces\eclipse\PrintGUID"/>
+	
+	<!-- Created Targets -->
+	<target name="all" depends="deleteAll, buildProjects, PrintGUID">
+	</target>
+	
+	<!--Delete Old Files-->
+	<target name="deleteAll">
+		<delete dir="${op.apps}"/>
+	</target>
+	
+	<!--Recompile-->
+	<target name="buildProjects" depends="deleteAll">
+		<mkdir dir="${op.apps}"/>
+		<javac srcdir="${ip.PrintGUID}/src" destdir="${ip.PrintGUID}/bin"/>
+	</target>
+	
+	<!--Create New JARS-->
+	<!--Sample Helper-->
+	<target name="PrintGUID">
+	<jar destfile="${op.apps}/PrintGUID.jar" basedir="${ip.PrintGUID}/bin">
+    	<manifest>
+            <attribute name="Main-Class" value="com.ibm.rhapsody.samples.printguid.PrintGUID_Launcher"/>
+            <attribute name="Class-Path" value=". "/>
+            </manifest>
+        </jar>
+		<copy file="${ip.PrintGUID}/PrintGUID.hep" todir="${op.apps}"/>
+	</target>
+	
+</project>
